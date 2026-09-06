@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dhanesh S M — Software Developer</title>
+<meta name="description" content="Portfolio of Dhanesh S M — Computer Science graduate, Java & Spring Boot developer based in Al Ain, UAE.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue-deep:#0F2647;
+    --blue-panel:#14294F;
+    --blue-bg:#173259;
+    --line:#CFE8FF;
+    --line-dim:#5D82AE;
+    --amber:#FFB020;
+    --text:#E9F2FF;
+    --text-muted:#8FB4DE;
+    --grid-line: rgba(207,232,255,0.07);
+    --radius: 2px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--blue-deep);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    background-image:
+      repeating-linear-gradient(0deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 32px),
+      repeating-linear-gradient(90deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 32px);
+  }
+  a{color:inherit;}
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif;letter-spacing:-0.01em;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 28px;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(15,38,71,0.85);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line-dim);
+  }
+  nav .wrap{display:flex;justify-content:space-between;align-items:center;height:64px;}
+  .brand{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:0.95rem;color:var(--line);}
+  .brand span{color:var(--amber);}
+  nav ul{list-style:none;display:flex;gap:28px;}
+  nav ul a{font-size:0.85rem;color:var(--text-muted);text-decoration:none;font-family:'JetBrains Mono',monospace;transition:color .2s;}
+  nav ul a:hover{color:var(--amber);}
+  .nav-toggle{display:none;background:none;border:1px solid var(--line-dim);color:var(--line);padding:6px 10px;font-family:'JetBrains Mono',monospace;}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    position:relative;
+    padding:120px 0 90px;
+    overflow:hidden;
+  }
+  .drawing-no{
+    font-family:'JetBrains Mono',monospace;
+    color:var(--line-dim);
+    font-size:0.78rem;
+    letter-spacing:0.12em;
+    margin-bottom:22px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .drawing-no::before{content:"";width:34px;height:1px;background:var(--line-dim);display:inline-block;}
+  h1.title{
+    font-size:clamp(2.4rem,6vw,4.4rem);
+    font-weight:700;
+    color:var(--text);
+    line-height:1.02;
+    margin-bottom:18px;
+  }
+  h1.title em{
+    font-style:normal;
+    color:var(--amber);
+  }
+  .tagline{
+    max-width:560px;
+    color:var(--text-muted);
+    font-size:1.08rem;
+    margin-bottom:38px;
+  }
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:70px;}
+  .btn{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.85rem;
+    padding:12px 22px;
+    border-radius:var(--radius);
+    text-decoration:none;
+    display:inline-flex;align-items:center;gap:8px;
+    transition:transform .15s ease, background .2s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--amber);color:var(--blue-deep);font-weight:600;}
+  .btn-outline{border:1px solid var(--line-dim);color:var(--line);}
+  .btn-outline:hover{border-color:var(--amber);color:var(--amber);}
+
+  /* title block — signature element, mimics an engineering drawing title block */
+  .title-block{
+    border:1px solid var(--line-dim);
+    background:var(--blue-panel);
+    max-width:620px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.82rem;
+  }
+  .title-block .tb-row{display:flex;border-bottom:1px solid var(--line-dim);}
+  .title-block .tb-row:last-child{border-bottom:none;}
+  .title-block .tb-cell{
+    padding:10px 16px;flex:1;border-right:1px solid var(--line-dim);color:var(--text-muted);
+  }
+  .title-block .tb-cell:last-child{border-right:none;}
+  .title-block .tb-cell b{display:block;color:var(--text);font-size:0.9rem;margin-bottom:2px;font-weight:600;}
+  .title-block .tb-label{color:var(--line-dim);font-size:0.68rem;text-transform:uppercase;letter-spacing:0.08em;display:block;margin-bottom:3px;}
+
+  /* corner compass svg decoration */
+  .compass{position:absolute;top:60px;right:-40px;opacity:0.5;width:260px;height:260px;}
+  @media(max-width:720px){.compass{display:none;}}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:80px 0;border-top:1px solid rgba(207,232,255,0.08);}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;color:var(--amber);font-size:0.78rem;
+    letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;display:block;
+  }
+  h2.h-title{font-size:clamp(1.6rem,3.2vw,2.2rem);margin-bottom:36px;color:var(--text);}
+
+  /* about */
+  .about-text{max-width:720px;color:var(--text-muted);font-size:1.02rem;}
+  .about-facts{
+    margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;
+    background:var(--line-dim);border:1px solid var(--line-dim);
+  }
+  .about-facts div{background:var(--blue-deep);padding:16px 18px;}
+  .about-facts span{display:block;font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:var(--line-dim);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;}
+  .about-facts b{color:var(--text);font-weight:500;font-size:0.95rem;}
+
+  /* skills */
+  .skill-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;}
+  .skill-group{border-left:2px solid var(--amber);padding-left:18px;}
+  .skill-group h3{font-size:0.95rem;color:var(--line);margin-bottom:12px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.06em;}
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .tag{
+    font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--text-muted);
+    border:1px solid var(--line-dim);padding:5px 11px;border-radius:var(--radius);
+  }
+
+  /* experience timeline — a ruler/scale metaphor, order carries real meaning here */
+  .timeline{position:relative;padding-left:34px;}
+  .timeline::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:1px;background:var(--line-dim);}
+  .t-item{position:relative;padding-bottom:46px;}
+  .t-item:last-child{padding-bottom:0;}
+  .t-item::before{
+    content:"";position:absolute;left:-34px;top:4px;width:11px;height:11px;
+    border:2px solid var(--amber);background:var(--blue-deep);border-radius:50%;
+  }
+  .t-date{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--amber);display:block;margin-bottom:6px;letter-spacing:0.05em;}
+  .t-role{font-size:1.08rem;font-weight:600;color:var(--text);margin-bottom:2px;}
+  .t-org{font-size:0.88rem;color:var(--text-muted);margin-bottom:12px;font-style:italic;}
+  .t-item ul{padding-left:18px;color:var(--text-muted);font-size:0.94rem;}
+  .t-item li{margin-bottom:6px;}
+
+  /* projects */
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;}
+  .proj-card{
+    border:1px solid var(--line-dim);background:var(--blue-panel);padding:26px;
+    display:flex;flex-direction:column;gap:12px;transition:border-color .2s;
+  }
+  .proj-card:hover{border-color:var(--amber);}
+  .proj-index{font-family:'JetBrains Mono',monospace;color:var(--line-dim);font-size:0.75rem;}
+  .proj-card h3{font-size:1.1rem;color:var(--text);}
+  .proj-card p{color:var(--text-muted);font-size:0.92rem;flex:1;}
+  .proj-stack{display:flex;flex-wrap:wrap;gap:6px;}
+  .proj-stack span{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--amber);border:1px solid rgba(255,176,32,0.35);padding:3px 8px;}
+
+  /* education */
+  .edu-block{border:1px solid var(--line-dim);background:var(--blue-panel);padding:26px 30px;max-width:640px;}
+  .edu-block h3{font-size:1.15rem;color:var(--text);margin-bottom:4px;}
+  .edu-block p{color:var(--text-muted);font-size:0.92rem;}
+  .edu-block .cgpa{margin-top:14px;font-family:'JetBrains Mono',monospace;color:var(--amber);font-size:0.85rem;}
+
+  /* footer / contact */
+  footer{padding:80px 0 60px;text-align:center;}
+  footer h2{font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:16px;}
+  footer p{color:var(--text-muted);margin-bottom:34px;}
+  .contact-links{display:flex;justify-content:center;flex-wrap:wrap;gap:16px;margin-bottom:60px;}
+  .foot-note{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--line-dim);}
+
+  [data-reveal]{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease;}
+  [data-reveal].is-visible{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){
+    [data-reveal]{opacity:1;transform:none;transition:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  @media(max-width:720px){
+    nav ul{display:none;}
+    .title-block .tb-row{flex-direction:column;}
+    .title-block .tb-cell{border-right:none;border-bottom:1px solid var(--line-dim);}
+    .title-block .tb-cell:last-child{border-bottom:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">DSM<span>.</span>DEV</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="drawing-no mono">DRAWING NO. 001 — PROFILE ELEVATION</span>
+    <h1 class="title">Dhanesh S M<br>builds <em>backend</em> systems<br>that hold up.</h1>
+    <p class="tagline">Computer Science graduate specializing in Java &amp; Spring Boot, with hands-on experience across software development, site supervision, and e-commerce operations in the UAE.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="mailto:sm.dhanesh2014@gmail.com">Email me</a>
+      <a class="btn btn-outline" href="https://www.linkedin.com/in/dhaneshsaji/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn btn-outline" href="tel:+971547240306">+971 054 724 0306</a>
+    </div>
+
+    <div class="title-block">
+      <div class="tb-row">
+        <div class="tb-cell"><span class="tb-label">Name</span><b>Dhanesh S M</b></div>
+        <div class="tb-cell"><span class="tb-label">Role</span><b>Software Developer (Entry-level)</b></div>
+      </div>
+      <div class="tb-row">
+        <div class="tb-cell"><span class="tb-label">Location</span><b>Al Ain, Abu Dhabi, UAE</b></div>
+        <div class="tb-cell"><span class="tb-label">Status</span><b>Available immediately</b></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap" data-reveal>
+    <span class="eyebrow">01 — Profile</span>
+    <h2 class="h-title">About</h2>
+    <p class="about-text">Dedicated and motivated Computer Science Engineering graduate with hands-on knowledge in Java, Spring Boot, and web development. Experienced in software development internship, site supervision, office administration, inventory management, and e-commerce website handling in the UAE. Strong organizational and problem-solving skills, with a valid UAE driving license and open to relocating anywhere within the UAE.</p>
+    <div class="about-facts">
+      <div><span>Languages</span><b>English, Tamil</b></div>
+      <div><span>Driving License</span><b>Valid UAE License</b></div>
+      <div><span>Cloud</span><b>AWS &amp; Azure (basics)</b></div>
+      <div><span>Relocation</span><b>Open, within UAE</b></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap" data-reveal>
+    <span class="eyebrow">02 — Toolset</span>
+    <h2 class="h-title">Core Skills</h2>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <h3>Languages</h3>
+        <div class="tag-row">
+          <span class="tag">Java</span>
+          <span class="tag">JavaScript</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Frameworks</h3>
+        <div class="tag-row">
+          <span class="tag">Spring Boot</span>
+          <span class="tag">React (basics)</span>
+          <span class="tag">Bootstrap</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Web</h3>
+        <div class="tag-row">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Data &amp; Tools</h3>
+        <div class="tag-row">
+          <span class="tag">MySQL</span>
+          <span class="tag">MariaDB</span>
+          <span class="tag">MS Excel</span>
+          <span class="tag">MS Word</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap" data-reveal>
+    <span class="eyebrow">03 — Timeline</span>
+    <h2 class="h-title">Work Experience</h2>
+    <div class="timeline">
+      <div class="t-item">
+        <span class="t-date mono">MAY 2025 — AUG 2025</span>
+        <div class="t-role">Software Development Intern</div>
+        <div class="t-org">Femtosoft</div>
+        <ul>
+          <li>Assisted in developing web applications using Java and Spring Boot</li>
+          <li>Worked on backend development and basic REST API implementation</li>
+          <li>Supported database operations using MySQL</li>
+          <li>Collaborated with team members on debugging and testing</li>
+        </ul>
+      </div>
+      <div class="t-item">
+        <span class="t-date mono">UAE</span>
+        <div class="t-role">Office Assistant &amp; E-commerce Handler</div>
+        <div class="t-org">Dubai / Al Ain, UAE</div>
+        <ul>
+          <li>Managed inventory, stock control, and warehouse operations</li>
+          <li>Maintained accurate stock records and reports using MS Excel</li>
+          <li>Handled office tasks including data entry, documentation, and reporting</li>
+          <li>Managed and updated the Hala Ecom website — product uploads, pricing, stock updates</li>
+          <li>Monitored online orders and coordinated the dispatch process</li>
+        </ul>
+      </div>
+      <div class="t-item">
+        <span class="t-date mono">UAE</span>
+        <div class="t-role">Site Supervisor</div>
+        <div class="t-org">Construction Site Operations</div>
+        <ul>
+          <li>Supervised daily site activities and workforce</li>
+          <li>Ensured work completed as per schedule and safety standards</li>
+          <li>Coordinated with team members and reported progress updates</li>
+          <li>Assisted in material tracking and site documentation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap" data-reveal>
+    <span class="eyebrow">04 — Build log</span>
+    <h2 class="h-title">Projects</h2>
+    <div class="projects-grid">
+      <div class="proj-card">
+        <span class="proj-index mono">PRJ-01</span>
+        <h3>Student Information System</h3>
+        <p>A CRUD-based system for managing student records, with a simple, clean interface for day-to-day admin use.</p>
+        <div class="proj-stack">
+          <span>Spring Boot</span><span>MySQL</span><span>HTML/Bootstrap</span>
+        </div>
+      </div>
+      <div class="proj-card">
+        <span class="proj-index mono">PRJ-02</span>
+        <h3>To-Do List Application</h3>
+        <p>A lightweight task manager supporting adding, editing, and deleting tasks with instant UI feedback.</p>
+        <div class="proj-stack">
+          <span>JavaScript</span>
+        </div>
+      </div>
+      <div class="proj-card">
+        <span class="proj-index mono">PRJ-03</span>
+        <h3>Railway Accident Prevention System</h3>
+        <p>Final-year project exploring object detection for railway safety, using image processing concepts based on YOLO.</p>
+        <div class="proj-stack">
+          <span>Image Processing</span><span>YOLO</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap" data-reveal>
+    <span class="eyebrow">05 — Credentials</span>
+    <h2 class="h-title">Education</h2>
+    <div class="edu-block">
+      <h3>Bachelor of Engineering — Computer Science &amp; Engineering</h3>
+      <p>Anna University, Tamil Nadu, India · Graduated 2025</p>
+      <div class="cgpa">CGPA: 7.3 / 10</div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap" data-reveal>
+    <span class="eyebrow">06 — Contact</span>
+    <h2>Let's build something.</h2>
+    <p>Open to entry-level IT and software development roles across the UAE.</p>
+    <div class="contact-links">
+      <a class="btn btn-primary" href="mailto:sm.dhanesh2014@gmail.com">sm.dhanesh2014@gmail.com</a>
+      <a class="btn btn-outline" href="tel:+971547240306">+971 054 724 0306</a>
+      <a class="btn btn-outline" href="https://www.linkedin.com/in/dhaneshsaji/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <span class="foot-note mono">AL AIN, ABU DHABI, UAE — © DHANESH S M</span>
+  </div>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('[data-reveal]');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+  },{threshold:0.15});
+  els.forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
